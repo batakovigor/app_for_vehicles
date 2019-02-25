@@ -1,15 +1,15 @@
 <template>
-    <div>
-        <el-row>
-            <el-col :span="24">
-                <div class="grid-content bg-purple-dark">
-                    <input v-model="login" type="text" placeholder="Логин"/>
-                    <input v-model="password" type="password" placeholder="Пароль"/>
-                    <button @click="setlogin">Войти</button>
-                </div>
-            </el-col>
-        </el-row>
-    </div>
+    <el-container>
+        <el-form label-width="150px">
+            <el-form-item label="Имя пользователя" prop="name">
+                <el-input v-model="login" type="text" placeholder="Логин"></el-input>
+            </el-form-item>
+            <el-form-item label="Пароль" prop="pass">
+                <el-input v-model="password" type="password" autocomplete="off" placeholder="Пароль"></el-input>
+            </el-form-item>
+            <el-button type="primary" @click="setlogin">Войти</el-button>
+        </el-form>
+    </el-container>
 </template>
 
 <script>

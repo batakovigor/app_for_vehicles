@@ -85,7 +85,7 @@ class RequestsSerializer(serializers.ModelSerializer):
     """Сериализация заявок"""
     type_request = TypeRequestSerializer()
     car = CarSerializer()
-    department = DepartmentSerializer()
+    department = FilterDepartmentSerializer()
     creater = UserSerializer()
 
     class Meta:
@@ -115,7 +115,8 @@ class RequestsPostSerializer(serializers.ModelSerializer):
         model = Requests
         fields = (
             "type_request",
-            "car", "department",
+            "car",
+            "department",
             "date_request",
             "time_start_request",
             "time_end_request",
