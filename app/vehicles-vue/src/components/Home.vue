@@ -1,21 +1,35 @@
 <template>
-    <div>
-        <div>
-            <el-row>
-                <el-col :span="24">
-                    <div class="grid-content">
-                        <h1>
-                            Зяавки на автотранспорт
-                        </h1>
-                        <button v-if="!auth" @click="gologin">Вход</button>
-                        <button v-else @click="logout">Выход</button>
-                        <Requests v-if="auth"></Requests>
-                    </div>
-                </el-col>
-            </el-row>
-        </div>
+    <el-container>
+        <el-header>Зяавки на автотранспорт
+            <el-breadcrumb separator-class="el-icon-arrow-right">
+                <el-breadcrumb-item :to="{ path: '/' }">homepage</el-breadcrumb-item>
+                <el-breadcrumb-item>promotion management</el-breadcrumb-item>
+                <el-breadcrumb-item>promotion list</el-breadcrumb-item>
+                <el-breadcrumb-item>promotion detail</el-breadcrumb-item>
+            </el-breadcrumb>
+            <div class="line"></div>
+            <el-menu :default-active="activeIndex" class="el-menu-demo" mode="horizontal" @select="handleSelect">
+                <el-menu-item index="1">На домашнюю</el-menu-item>
+                <el-submenu index="2">
+                    <template slot="title">Заявки</template>
+                    <el-menu-item index="2-1">на легковой автотранспорт</el-menu-item>
+                    <el-menu-item index="2-2">на спецтехнику</el-menu-item>
+                    <el-submenu index="2-4">
+                        <template slot="title">item four</template>
+                        <el-menu-item index="2-4-1">item one</el-menu-item>
+                        <el-menu-item index="2-4-2">item two</el-menu-item>
+                        <el-menu-item index="2-4-3">item three</el-menu-item>
+                    </el-submenu>
+                </el-submenu>
+                <el-menu-item index="3" disabled>Info</el-menu-item>
+                <el-button type="primary" v-if="!auth" @click="gologin">Вход</el-button>
+                <el-button type="primary" v-else @click="logout">Выход</el-button>
+            </el-menu>
+            <div class="line"></div>
 
-    </div>
+            <Requests v-if="auth"></Requests>
+        </el-header>
+    </el-container>
 </template>
 
 <script>
@@ -24,6 +38,12 @@
         name: "Home",
         components:{
             Requests
+        },
+        data() {
+            return {
+                activeIndex: '1',
+                activeIndex2: '1'
+            };
         },
         computed: {
             auth() {
@@ -39,42 +59,24 @@
             logout() {
                 sessionStorage.removeItem("auth_token")
                 window.location = '/'
+            },
+            handleSelect(key, keyPath) {
+                console.log(key, keyPath);
             }
         },
     }
 </script>
 
 <style scoped>
-    .el-row {
-        margin-bottom: 20px;
-        &:last-child {
-            margin-bottom: 0;
-        }
+    .el-header, .el-footer {
+        background-color: #B3C0D1;
+        color: #333;
+        text-align: center;
+        line-height: 60px;
     }
 
-    .el-col {
-        border-radius: 4px;
+    body > .el-container {
+        margin-bottom: 40px;
     }
 
-    .bg-purple-dark {
-        background: #99a9bf;
-    }
-
-    .bg-purple {
-        background: #d3dce6;
-    }
-
-    .bg-purple-light {
-        background: #e5e9f2;
-    }
-
-    .grid-content {
-        border-radius: 4px;
-        min-height: 36px;
-    }
-
-    .row-bg {
-        padding: 10px 0;
-        background-color: #f9fafc;
-    }
 </style>
