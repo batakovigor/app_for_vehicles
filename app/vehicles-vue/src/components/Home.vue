@@ -1,5 +1,4 @@
 <template>
-    <div>
         <el-container>
             <el-header>Зяавки на автотранспорт
                 <div class="line"></div>
@@ -33,10 +32,7 @@
             <el-main>
                 <Requests v-if="auth"></Requests>
             </el-main>
-
-
         </el-container>
-        </div>
 </template>
 
 <script>
