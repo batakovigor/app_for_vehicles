@@ -72,9 +72,10 @@
 <script>
     import $ from 'jquery'
     export default {
-        name: "RequestForm",
+        name: "Requestform",
         data() {
             return {
+                dialogFormVisible: false,
                 ruleFormRequest: {
                     type_request: [],
                     car: '',

@@ -57,14 +57,15 @@
 </template>
 
 <script>
-    import Requestform from '@/components/forms/Requestform'
     import $ from 'jquery'
-
+    import Requestform from '@/components/forms/Requestform'
     export default {
         name: "Requests",
+        components:{
+            Requestform
+        },
         data() {
             return {
-                dialogFormVisible: false,
                 tableData: [],
                 departments: []
             }
