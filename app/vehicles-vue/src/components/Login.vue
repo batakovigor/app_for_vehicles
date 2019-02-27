@@ -57,7 +57,7 @@
     }
 
     .el-col {
-        border-radius: 4px;
+        border-radius: 2px;
     }
 
     .bg-purple-dark {

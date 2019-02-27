@@ -1,6 +1,10 @@
 <template>
-    <el-container>
-        <el-header>Зяавки на автотранспорт
+    <div>
+        <el-container>
+            <el-header>Зяавки на автотранспорт
+                <div class="line"></div>
+            </el-header>
+            <div class="line"></div>
             <el-breadcrumb separator-class="el-icon-arrow-right">
                 <el-breadcrumb-item :to="{ path: '/' }">homepage</el-breadcrumb-item>
                 <el-breadcrumb-item>promotion management</el-breadcrumb-item>
@@ -26,10 +30,13 @@
                 <el-button type="primary" v-else @click="logout">Выход</el-button>
             </el-menu>
             <div class="line"></div>
+            <el-main>
+                <Requests v-if="auth"></Requests>
+            </el-main>
 
-            <Requests v-if="auth"></Requests>
-        </el-header>
-    </el-container>
+
+        </el-container>
+        </div>
 </template>
 
 <script>
@@ -67,7 +74,7 @@
     }
 </script>
 
-<style scoped>
+<style>
     .el-header, .el-footer {
         background-color: #B3C0D1;
         color: #333;
